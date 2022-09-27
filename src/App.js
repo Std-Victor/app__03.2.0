@@ -10,11 +10,11 @@ export default function App() {
     <div className="app__container">
       <MainHeader />
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/app__03/" element={<Navigate to="/app__03/home" />} />
+        <Route path="/app__03/home" element={<Home />} />
+        <Route path="/app__03/product" element={<Product />} />
+        <Route path="/app__03/product/:id" element={<ProductDetail />} />
+        <Route path="/app__03/*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
