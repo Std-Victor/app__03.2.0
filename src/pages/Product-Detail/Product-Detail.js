@@ -9,7 +9,7 @@ export default function ProductDetail() {
   const { id } = useParams();
   useEffect(() => {
     +id > 20
-      ? navigate(`/app__03/${id}`)
+      ? navigate(`/${id}`)
       : fetch(`https://fakestoreapi.com/products/${id}`)
           .then((response) => response.json())
           .then((json) => setItem(json));
