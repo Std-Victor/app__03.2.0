@@ -5,14 +5,14 @@ export default function MainHeader() {
   return (
     <nav className={style.navbar}>
       <div className={style.logo}>
-        <Link to="/">LOGO</Link>
+        <Link to="/app__03/">LOGO</Link>
       </div>
       <div className={style.nav__links}>
         <ul>
           <li>
             <NavLink
               className={(data) => (data.isActive ? style.active : "")}
-              to="/home"
+              to="/app__03/home"
             >
               Home
             </NavLink>
@@ -20,7 +20,7 @@ export default function MainHeader() {
           <li>
             <NavLink
               className={(data) => (data.isActive ? style.active : "")}
-              to="/product"
+              to="/app__03/product"
             >
               Product
             </NavLink>
