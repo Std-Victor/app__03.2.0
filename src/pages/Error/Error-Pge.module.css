@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > p {
+  color: #ccc;
+  font-size: 25rem;
+  font-weight: 900;
+}
+
+.container > h3 {
+  font-size: 2rem;
+  margin-top: -4rem;
+  text-transform: capitalize;
+}

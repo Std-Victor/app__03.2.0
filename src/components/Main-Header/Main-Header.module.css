@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.logo a {
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.nav__links ul {
+  display: flex;
+  column-gap: 1.5rem;
+  list-style-type: none;
+}
+
+.nav__links ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem 1rem;
+}
+
+a.active {
+  color: #7c52a4 !important;
+  border-bottom: 0.45rem solid;
+  border-radius: 0.5rem;
+}
+
+.sign {
+  display: flex;
+  gap: 1rem;
+}
+
+.sign button {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.sign button:first-child {
+  background-color: transparent;
+}
+
+.sign button:last-child {
+  color: #7c52a4;
+}

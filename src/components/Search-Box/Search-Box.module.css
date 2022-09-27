@@ -1,0 +1,22 @@
+.container {
+  -webkit-appearance: none;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  width: 35rem;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  line-height: 30px;
+}
+
+.icon {
+  font-size: 2.8em;
+  padding: 0 0.8rem 0 0;
+  color: #cccccc;
+}
