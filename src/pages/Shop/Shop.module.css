@@ -1,0 +1,28 @@
+.container{
+  margin-top: 10rem;
+}
+
+.total{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+  margin-top: 2rem;
+  padding: 1rem 5rem;
+  margin-left: -3rem;
+  width: 90%;
+}
+
+.amount {
+  padding: 1rem 5rem;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  background-color: #2bef2b;
+  border: none;
+  font-weight: 700;
+}
+
+.total > p {
+  font-size: 2rem;
+  text-transform: capitalize;
+}

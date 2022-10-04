@@ -1,3 +1,5 @@
+import React from "react";
+
 import style from "./Error-Pge.module.css";
 
 export default function ErrorPage() {

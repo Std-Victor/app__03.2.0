@@ -30,8 +30,36 @@ a.active {
   border-radius: 0.5rem;
 }
 
+.left__side,
 .sign {
   display: flex;
+  align-items: center;
+}
+
+.left__side{
+  gap: 1.5rem;
+}
+
+.shopping{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.shopping__icon {
+  font-size: 2.8rem;
+  font-weight: lighter !important;
+}
+
+.shop__item{
+  font-size: 1.2rem;
+  position:absolute;
+  top: 30%;
+}
+
+.sign {
   gap: 1rem;
 }
 

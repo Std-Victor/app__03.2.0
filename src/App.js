@@ -1,7 +1,10 @@
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import ProductDetail from "./pages/Product-Detail/Product-Detail";
+import Shop from "./pages/Shop/Shop";
 import ErrorPage from "./pages/Error/Error-Page";
 import MainHeader from "./components/Main-Header/Main-Header";
 
@@ -14,6 +17,7 @@ export default function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>

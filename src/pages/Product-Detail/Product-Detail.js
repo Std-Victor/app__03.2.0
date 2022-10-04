@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import style from "./Product-Detail.module.css";
 import { AiFillStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+
+import { addItem } from "../../redux/Shop-Reducer/shop.actions";
 
 export default function ProductDetail() {
   const [item, setItem] = useState();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
     +id > 20
@@ -14,11 +17,19 @@ export default function ProductDetail() {
           .then((response) => response.json())
           .then((json) => setItem(json));
   }, [id]);
+  const dispatch = useDispatch();
+
   return (
     <div className={style.container}>
       <div className={style.head}>
         <div className={style.img__container}>
           <img src={item?.image} alt={item?.title} />
+          <button
+            className={style.add_to_cart}
+            onClick={() => dispatch(addItem(item))}
+          >
+            Add to Cart
+          </button>
         </div>
         <div className={style.item__info}>
           <div className={style.title__cat}>
@@ -33,7 +44,12 @@ export default function ProductDetail() {
               </span>
               <span className={style.count}>({item?.rating.count})</span>
             </div>
-            <button className={style.price}>$ {item?.price}</button>
+            <button
+              className={style.price}
+              onClick={() => dispatch(addItem(item))}
+            >
+              $ {item?.price}
+            </button>
           </div>
         </div>
       </div>
