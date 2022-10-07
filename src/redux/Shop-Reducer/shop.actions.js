@@ -18,3 +18,8 @@ export const decreaseItemQuantity = (id) => ({
 export const fetletItem = () => ({
   type : shopActionType.FELTER_ITEM
 })
+
+export const handleItemQuantity = ({id, quantity}) => ({
+  type: shopActionType.HANDLE_ITEM_QUANTITY,
+  payload: {id, quantity},
+})

@@ -1,11 +1,15 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { GrShop } from "react-icons/gr";
 
 import style from "./Main-Header.module.css";
-import { useSelector } from "react-redux";
+
+import { CardDropdown } from "../CardDropdown/CardDropdown";
+import { toggleCart } from '../../redux/Cart/cart.actions'
 
 export default function MainHeader() {
-  const item_selected = useSelector((state) => state.shop.total_selected_item);
+  const {shop : {total_selected_item : item_selected }, cart : { hidden }} = useSelector((state) => state);
+  const dispatch = useDispatch();
   return (
     <nav className={style.navbar}>
       <div className={style.logo}>
@@ -42,9 +46,10 @@ export default function MainHeader() {
         </ul>
       </div>
       <div className={style.left__side}>
-        <div className={style.shopping}>
+        <div className={style.shopping} onClick={()=> dispatch(toggleCart())}>
           <GrShop className={style.shopping__icon} />
           <span className={style.shop__item}>{item_selected}</span>
+        {hidden ? null : <CardDropdown />}
         </div>
         <div className={style.sign}>
           <button>Sign Up</button>

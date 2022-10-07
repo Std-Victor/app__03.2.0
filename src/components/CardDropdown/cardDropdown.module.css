@@ -1,0 +1,47 @@
+.container {
+  position: absolute;
+  width: 27rem;
+  height: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 1px solid black;
+  background-color: white;
+  top: 4rem;
+  right: 0;
+  z-index: 5;
+}
+
+.items {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.items::-webkit-scrollbar {
+  width: .8rem;
+}
+
+.items::-webkit-scrollbar-track {
+  background-color: #dcdcdc;
+}
+
+.items::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: #000;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.button button{
+  padding: 1.2rem 4rem;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  background-color: #1b1b1b;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}

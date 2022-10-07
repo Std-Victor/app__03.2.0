@@ -1,28 +1,66 @@
 .container{
   margin-top: 10rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.item__container{
+  width: 70%;
+  height: max-content;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .total{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.26);
-  margin-top: 2rem;
-  padding: 1rem 5rem;
-  margin-left: -3rem;
-  width: 90%;
+  padding: 4rem 2rem;
+  height: 300px;
+  width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.amount {
-  padding: 1rem 5rem;
-  border-radius: 0.5rem;
+.line__field{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.total__field{
+  width: 100%;
+  margin-top: 2.5rem;
+  border-top: 1px solid #dcdcdc;
+  padding: 2.5rem 1.55rem;
+}
+
+.total__field .line__field{
+  font-weight: 900;
   font-size: 2rem;
-  background-color: #2bef2b;
+}
+
+.button__field{
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.button__field button{
+  padding: 1.2rem 5rem;
   border: none;
   font-weight: 700;
+  font-size: 1.5rem;
+  background-color: #10a510;
+  color: white;
+  cursor: pointer;
 }
 
-.total > p {
-  font-size: 2rem;
-  text-transform: capitalize;
+.button__field button:hover{
+  background-color: black;
 }
+
+
