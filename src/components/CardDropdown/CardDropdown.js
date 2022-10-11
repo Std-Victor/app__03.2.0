@@ -12,7 +12,7 @@ export const CardDropdown = () => {
   return (
     <div className={style.container}>
       <div className={style.items}>
-        {item.map(item => <CardItem item={item.item} quantity={item.quantity}  />)}
+        {item.map(item => <CardItem item={item.item} quantity={item.quantity} key={item.item.id} />)}
       </div>
       <div className={style.button}>
         <button onClick={()=> navigate('/shop')}>Go to Checkout</button>

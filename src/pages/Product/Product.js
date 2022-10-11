@@ -1,38 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import style from "./Product.module.css";
 
 import SearchBox from "../../components/Search-Box/Search-Box";
 import CardList from "../../components/Card-list/Card-List";
-
-import {fetchData} from "../../redux/Product-Reducer/product.actions";
+import { fetchProductData } from "../../redux/Product-Reducer/product.api.calls";
+import Modal from "../../components/Modal/Modal";
 
 export default function Product() {
-  const [products, setProducts] = useState([]);
-  const [searchField, setSearchField] = useState("");
+  const isFetched = useSelector((state) => state.product.isFetched);
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((json) => dispatch(fetchData(json)));
+    fetchProductData(dispatch);
   }, []);
-
-  const handleChange = (e) => setSearchField(e.target.value);
-  const filteredPro = products.filter((pro) =>
-    pro.title.toLowerCase().includes(searchField.toLowerCase())
-  );
 
   return (
     <div className={style.container}>
       <div className={style.header}>
         <h1 className={style.title}>Choose Your Product </h1>
-        <SearchBox
-          placeholder={`search for product`}
-          handleChange={handleChange}
-        />
+        {isFetched && <SearchBox />}
       </div>
-      <CardList products={filteredPro} />
+      <CardList />
+      <Modal />
     </div>
   );
 }

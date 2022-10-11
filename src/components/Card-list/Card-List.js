@@ -1,17 +1,18 @@
 import style from "./Card-List.module.css";
 import Card from "../Card/Card";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
+import FetchError from "../Fetch-Error/Fetch.Error";
+
 export default function CardList() {
-  const productList = useSelector((state) => state.product.productList);
+  const { productList, error } = useSelector((state) => state.product);
+  if (error) return <FetchError />;
   if (!productList) return null;
   return (
     <div className={style.list}>
       {productList.map((pro) => (
-        <Link to={`/product/${pro.id}`}>
-          <Card key={pro.id} product={pro} />
-        </Link>
+        <Card product={pro} key={pro.id} />
       ))}
     </div>
   );

@@ -4,7 +4,7 @@ import style from "./Product-Detail.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
-import { addItem } from "../../redux/Shop-Reducer/shop.actions";
+import { addItem } from "../../redux/Shop-Reducer/shop.slice";
 
 export default function ProductDetail() {
   const [item, setItem] = useState();
