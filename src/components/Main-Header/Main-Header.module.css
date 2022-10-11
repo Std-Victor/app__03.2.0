@@ -59,23 +59,20 @@ a.active {
   top: 30%;
 }
 
-.sign {
-  gap: 1rem;
-}
-
 .sign button {
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  color: white;
+  background-color: #7c52a4;
+  border: 1px solid #7c52a4;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.sign button:first-child {
-  background-color: transparent;
-}
-
-.sign button:last-child {
+.sign button:hover{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   color: #7c52a4;
+  background-color: white;
 }

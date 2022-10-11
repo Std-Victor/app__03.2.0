@@ -58,8 +58,9 @@ export default function MainHeader() {
           {hidden ? null : <CardDropdown />}
         </div>
         <div className={style.sign}>
-          <button>Sign Up</button>
-          <button>Sign In</button>
+          <Link to={'/signin'}>
+            <button>Sign In</button>
+          </Link>
         </div>
       </div>
     </nav>

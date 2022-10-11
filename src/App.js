@@ -7,6 +7,7 @@ import ProductDetail from "./pages/Product-Detail/Product-Detail";
 import Shop from "./pages/Shop/Shop";
 import ErrorPage from "./pages/Error/Error-Page";
 import MainHeader from "./components/Main-Header/Main-Header";
+import SignIn from "./pages/Sign-In/SignIn";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>

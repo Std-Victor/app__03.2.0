@@ -41,7 +41,7 @@ export const shopSlice = createSlice({
       shopList: state.shopList.filter((item) => item.quantity !== 0),
     }),
 
-    handelItemQuantity: (state, action) => ({
+    handleItemQuantity: (state, action) => ({
       ...state,
       total_selected_item: state.shopList.reduce(
         (total, prd) =>
@@ -72,6 +72,6 @@ export const shopSlice = createSlice({
   },
 });
 
-export const { addItem, felterItemQuantity, handelItemQuantity } =
+export const { addItem, felterItemQuantity, handleItemQuantity } =
   shopSlice.actions;
 export default shopSlice.reducer;

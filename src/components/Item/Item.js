@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import { handelItemQuantity } from "../../redux/Shop-Reducer/shop.slice";
+import { handleItemQuantity } from "../../redux/Shop-Reducer/shop.slice";
 
 import style from "./item.module.css";
 
@@ -27,7 +27,7 @@ const Item = ({ item: { item, quantity, sub_total } }) => {
             id=""
             onChange={(e) =>
               dispatch(
-                handelItemQuantity({ id: item.id, quantity: e.target.value })
+                handleItemQuantity({ id: item.id, quantity: e.target.value })
               )
             }
           />
