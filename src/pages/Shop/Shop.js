@@ -7,19 +7,19 @@ import { felterItemQuantity } from "../../redux/Shop-Reducer/shop.slice";
 import style from "./Shop.module.css";
 
 const Shop = () => {
-  const { shopList, total_amount, total_selected_item } = useSelector(
+  const { shopList, total_amount, total_selected_item, currentUserId } = useSelector(
     (state) => state.shop
   );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(felterItemQuantity());
-    if (!total_selected_item) navigate("/product");
+    if (!total_selected_item)  navigate("/product");
   }, [total_selected_item]);
   const navigate = useNavigate();
   return (
     <div className={style.container}>
       <div className={style.item__container}>
-        {shopList.map((item) => (
+        {shopList[currentUserId].map((item) => (
           <Item item={item} key={item.item.id} />
         ))}
       </div>

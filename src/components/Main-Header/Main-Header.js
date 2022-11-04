@@ -6,11 +6,13 @@ import style from "./Main-Header.module.css";
 
 import { CardDropdown } from "../CardDropdown/CardDropdown";
 import { toggleCartHidden } from "../../redux/Cart/cart.slice";
+import { singOut } from "../../redux/user/user.slice";
 
 export default function MainHeader() {
   const {
     shop: { total_selected_item: item_selected },
     cart: { hidden },
+    user: { isAuth },
   } = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
@@ -28,39 +30,47 @@ export default function MainHeader() {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              className={(data) => (data.isActive ? style.active : "")}
-              to="/product"
-            >
-              Product
-            </NavLink>
-          </li>
-          <li>
-            {item_selected ? (
-              <NavLink
-                className={(data) => (data.isActive ? style.active : "")}
-                to="/shop"
-              >
-                Shop
-              </NavLink>
-            ) : null}
-          </li>
+          {isAuth && (
+            <>
+              <li>
+                <NavLink
+                  className={(data) => (data.isActive ? style.active : "")}
+                  to="/product"
+                >
+                  Product
+                </NavLink>
+              </li>
+              <li>
+                {item_selected ? (
+                  <NavLink
+                    className={(data) => (data.isActive ? style.active : "")}
+                    to="/shop"
+                  >
+                    Shop
+                  </NavLink>
+                ) : null}
+              </li>
+            </>
+          )}
         </ul>
       </div>
       <div className={style.left__side}>
-        <div
+        {isAuth && <div
           className={style.shopping}
           onClick={() => dispatch(toggleCartHidden())}
         >
           <GrShop className={style.shopping__icon} />
           <span className={style.shop__item}>{item_selected}</span>
           {hidden ? null : <CardDropdown />}
-        </div>
+        </div>}
         <div className={style.sign}>
-          <Link to={'/signin'}>
-            <button>Sign In</button>
-          </Link>
+          {!isAuth ? (
+            <Link to={"/signin"}>
+              <button>Sign In</button>
+            </Link>
+          ) : (
+            <button onClick={() => dispatch(singOut())}>Sign Out</button>
+          )}
         </div>
       </div>
     </nav>

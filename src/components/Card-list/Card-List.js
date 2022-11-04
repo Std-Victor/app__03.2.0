@@ -5,13 +5,12 @@ import { useSelector } from "react-redux";
 
 import FetchError from "../Fetch-Error/Fetch.Error";
 
-export default function CardList() {
-  const { productList, error } = useSelector((state) => state.product);
+export default function CardList({products}) {
+  const  error  = useSelector((state) => state.product.error);
   if (error) return <FetchError />;
-  if (!productList) return null;
   return (
     <div className={style.list}>
-      {productList.map((pro) => (
+      {products.map((pro) => (
         <Card product={pro} key={pro.id} />
       ))}
     </div>

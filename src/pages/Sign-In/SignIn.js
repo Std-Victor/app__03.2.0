@@ -1,62 +1,154 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FromInput } from "../../components/FormInput/FormInput";
+import { addUerAuth, addUserData } from "../../redux/user/user.slice";
 import style from "./signIn.module.css";
 
 export default function SignIn() {
-  return (<div className={style.container}>hhh</div>);
+  const [signUpValues, setSignUpValues] = useState({
+    username: "",
+    email: "",
+    birthday: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [signInValues, setSignInValues] = useState({
+    email: "",
+    password: "",
+  });
+  const location = useLocation();
+  const user = location.pathname.split("/")[1] === "admin" ? "admin" : "client";
+  const { msgError, isAuth } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  if (isAuth) return navigate("/home");
+
+  const inputs = [
+    {
+      id: 1,
+      name: "username",
+      type: "text",
+      label: "Username",
+      error:
+        "Username shoul be 3-16 characters and shouldn't include any special character!",
+      pattern: "^[a-zA-Z0-9]{3,16}$",
+      required: true,
+      autoComplete: "off",
+    },
+    {
+      id: 2,
+      name: "email",
+      type: "email",
+      label: "Email",
+      error: "It should be a valid email address!",
+      required: true,
+      autoComplete: "off",
+    },
+    {
+      id: 3,
+      name: "birthday",
+      type: "date",
+      label: "Birthday",
+      required: true,
+    },
+    {
+      id: 4,
+      name: "password",
+      type: "password",
+      label: "Password",
+      error:
+        "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character! ",
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      required: true,
+      autoComplete: "off",
+    },
+    {
+      id: 5,
+      name: "confirmPassword",
+      type: "password",
+      label: "Confirm Password",
+      error: "Passwords don't match!",
+      pattern: signUpValues.password
+        .replaceAll("$", "\\$")
+        .replaceAll("^", "\\^"),
+      required: true,
+      autoComplete: "off",
+    },
+  ];
+
+  const handleSignInChange = (e) =>
+    setSignInValues({ ...signInValues, [e.target.name]: e.target.value });
+
+  const handleSignUpChange = (e) =>
+    setSignUpValues({ ...signUpValues, [e.target.name]: e.target.value });
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    dispatch(
+      addUerAuth({
+        type: user,
+        data: signInValues,
+      })
+    );
+    return (navigate("/home"))
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    dispatch(
+      addUserData({
+        type: user,
+        data: signUpValues,
+      })
+    );
+    return (setSignUpValues(
+      Object.keys(signUpValues).reduce(
+        (obj, item) => ({ ...obj, [item]: "" }),
+        {}
+      )
+    ), navigate("/home"));
+  };
+
+  return (
+    <div className={style.container}>
+      <div className={style.item}>
+        <h1>
+          Sign <span>in</span>
+        </h1>
+        <form onSubmit={handleSignIn}>
+          {inputs
+            .filter((input) => ["email", "password"].includes(input.name))
+            .map((input) => (
+              <FromInput
+                key={input.id}
+                {...input}
+                value={signInValues[input.name]}
+                onChange={handleSignInChange}
+              />
+            ))}
+          <button>Sign In</button>
+          <p>{msgError}</p>
+        </form>
+      </div>
+      <div className={style.item}>
+        <h1>
+          Sign <span>up</span>
+        </h1>
+        <form onSubmit={handleSignUp}>
+          {inputs.map((input) => (
+            <FromInput
+              key={input.id}
+              {...input}
+              value={signUpValues[input.name]}
+              onChange={handleSignUpChange}
+            />
+          ))}
+          <button>Sign Up</button>
+        </form>
+      </div>
+    </div>
+  );
 }
-
-/*
-
-<h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
-<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form action="#">
-			<h1>Create Account</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-container => add class 'right panal active'
-
-
-*/

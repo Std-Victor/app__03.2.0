@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const CardDropdown = () => {
-  const item = useSelector(state => state.shop.shopList);
+  const item = useSelector(state => state.shop.shopList[state.shop.currentUserId]);
   const navigate = useNavigate();
   return (
     <div className={style.container}>

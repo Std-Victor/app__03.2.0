@@ -1,0 +1,62 @@
+.form_input input[type="date"]:in-range::-webkit-datetime-edit-year-field,
+.form_input input[type="date"]:in-range::-webkit-datetime-edit-month-field,
+.form_input input[type="date"]:in-range::-webkit-datetime-edit-day-field,
+.form_input input[type="date"]:in-range::-webkit-datetime-edit-text {
+  display: none;
+}
+
+.form_input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form_input input {
+  padding: 1.35rem .8rem;
+  font-size: 1.65rem;
+  margin: 1rem 0 ;
+  border: none;
+  border-bottom: 2px solid gray;
+  z-index: 1;
+  background-color: transparent;
+  outline: none;
+}
+
+.form_input label {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: grey;
+  position: absolute;
+  z-index: 0;
+  margin: 2.8rem 0 0 .8rem;
+  transition: all 0.6s ease-in-out;
+}
+
+.form_input span {
+  font-size: 1.2rem;
+  margin: -.5rem 0 1rem;
+  padding: 0.3rem;
+  color: red;
+  display: none;
+}
+
+.form_input input:invalid[focused="true"] {
+  border-color: red;
+}
+
+.form_input input:invalid[focused="true"] ~ span {
+  display: block;
+}
+
+
+.form_input input:focus ~ label,
+.form_input input:valid ~ label {
+  font-size: 1.25rem;
+  color: black;
+  z-index: 2;
+  margin: 0;
+}
+
+.form_input input:valid ~ label {
+  color: grey;
+  z-index: 2;
+}
